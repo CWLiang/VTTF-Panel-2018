@@ -1,0 +1,22 @@
+<?
+	$DB_server="localhost";
+	$DB_name="panel";
+	$DB_tab="panel972";
+	$DB_user="root";
+	$DB_passwd="tch321";
+	$link=mysql_connect($DB_server,$DB_user,$DB_passwd);
+	$db=mysql_select_db($DB_name,$link);
+	$name=$_POST['name'];
+	$company=$_POST['company'];
+	$department=$_POST['department'];
+	$title=$_POST['title'];
+	$email=$_POST['email'];
+	$tel=$_POST['tel'];
+	$lunch=$_POST['lunch'];
+    $cmd="INSERT INTO $DB_tab (time, name, company, department, title, email, tel, lunch) VALUES(now(), '$name', '$company', '$department', '$title', '$email', '$tel', '$lunch')";
+	mysql_query("SET NAMES 'big5'");
+	mysql_query("SET CHARACTER SET big5");
+	mysql_query($cmd,$link);	
+    mysql_close($link);
+	header("location: complete.php");
+?>
